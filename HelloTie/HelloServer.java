@@ -50,12 +50,12 @@ public class HelloServer{
       
       // Use NamingContextExt which is part of the Interoperable
       // Naming Service specification.
-      NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+      NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef); //narrow보다는 casting으로 바꾸는 것이
 
       // bind the Object Reference in Naming
       String name = "Hello";
       NameComponent path[] = ncRef.to_name( name );
-      ncRef.rebind(path, href);
+      ncRef.rebind(path, href);  //rebind 대신 enroll(등록) 또는 register
 
       System.out.println("HelloServer ready and waiting ...");
 
