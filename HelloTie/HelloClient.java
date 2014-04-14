@@ -13,15 +13,15 @@ public class HelloClient{
 
       // get the root naming context
       org.omg.CORBA.Object objRef = 
-	  orb.resolve_initial_references("NameService");
+	  orb.resolve_initial_references("NameService"); //get_initial_references로 변경
 	  
       // Use NamingContextExt instead of NamingContext. This is 
       // part of the Interoperable naming Service.  
-      NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+      NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef); //narrow를 casting으로 변경
  
       // resolve the Object Reference in Naming
       String name = "Hello";
-      Hello helloImpl = HelloHelper.narrow(ncRef.resolve_str(name));
+      Hello helloImpl = HelloHelper.narrow(ncRef.resolve_str(name)); //narrow 보다 NamingObject으로
 
       System.out.println("Obtained a handle on server object: " + helloImpl);
       System.out.println(helloImpl.sayHello());
